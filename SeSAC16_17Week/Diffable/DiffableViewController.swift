@@ -3,8 +3,11 @@ import UIKit
 class DiffableViewController: UIViewController {
     
 
-    var viewModel = DiffableViewModel()
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var collectionView: UICollectionView!
     
+    
+    var viewModel = DiffableViewModel()
     private var cellRegisteration: UICollectionView.CellRegistration<UICollectionViewListCell, SearchResult>!
         
     private var dataSource: UICollectionViewDiffableDataSource<Int, SearchResult>!
