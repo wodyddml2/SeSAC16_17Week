@@ -31,6 +31,14 @@
 		6306E4852907AD0C000E49D7 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 6306E4842907AD0C000E49D7 /* Alamofire */; };
 		6306E4882907AD18000E49D7 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 6306E4872907AD18000E49D7 /* RxCocoa */; };
 		6306E48A2907AD18000E49D7 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6306E4892907AD18000E49D7 /* RxSwift */; };
+		63A9280D2907EB23002D1D8F /* SimplePickerViewRxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A9280C2907EB23002D1D8F /* SimplePickerViewRxViewController.swift */; };
+		63A9280F2907ED68002D1D8F /* SimplePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A9280E2907ED68002D1D8F /* SimplePickerView.swift */; };
+		63A928122907EE6D002D1D8F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 63A928112907EE6D002D1D8F /* SnapKit */; };
+		63A928162907F827002D1D8F /* NumbersRxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A928152907F827002D1D8F /* NumbersRxViewController.swift */; };
+		63A928182907F847002D1D8F /* NumbersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A928172907F847002D1D8F /* NumbersView.swift */; };
+		63A9281B2907FC0E002D1D8F /* SimpleValidationRxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A9281A2907FC0E002D1D8F /* SimpleValidationRxViewController.swift */; };
+		63A9281D2907FC80002D1D8F /* SimpleValidationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A9281C2907FC80002D1D8F /* SimpleValidationView.swift */; };
+		63A9282029080D9D002D1D8F /* SimpleTableViewRxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A9281F29080D9D002D1D8F /* SimpleTableViewRxViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +65,13 @@
 		6306E47D2907AB66000E49D7 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		6306E47F2907AB79000E49D7 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		6306E4812907AB8C000E49D7 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		63A9280C2907EB23002D1D8F /* SimplePickerViewRxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplePickerViewRxViewController.swift; sourceTree = "<group>"; };
+		63A9280E2907ED68002D1D8F /* SimplePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplePickerView.swift; sourceTree = "<group>"; };
+		63A928152907F827002D1D8F /* NumbersRxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersRxViewController.swift; sourceTree = "<group>"; };
+		63A928172907F847002D1D8F /* NumbersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersView.swift; sourceTree = "<group>"; };
+		63A9281A2907FC0E002D1D8F /* SimpleValidationRxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleValidationRxViewController.swift; sourceTree = "<group>"; };
+		63A9281C2907FC80002D1D8F /* SimpleValidationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleValidationView.swift; sourceTree = "<group>"; };
+		63A9281F29080D9D002D1D8F /* SimpleTableViewRxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTableViewRxViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +80,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6306E48A2907AD18000E49D7 /* RxSwift in Frameworks */,
+				63A928122907EE6D002D1D8F /* SnapKit in Frameworks */,
 				6306E4882907AD18000E49D7 /* RxCocoa in Frameworks */,
 				6306E4852907AD0C000E49D7 /* Alamofire in Frameworks */,
 			);
@@ -97,12 +113,13 @@
 				6306E4502907A767000E49D7 /* SceneDelegate.swift */,
 				6306E4642907A9F1000E49D7 /* APIKey.swift */,
 				6306E4662907AA02000E49D7 /* APIService.swift */,
+				6306E4762907AB2B000E49D7 /* SimpleCollectionViewController.swift */,
+				6306E4782907AB3F000E49D7 /* SimpleTableViewController.swift */,
 				6306E4682907AA14000E49D7 /* Diffable */,
 				6306E4522907A767000E49D7 /* ViewController.swift */,
 				6306E46D2907AA94000E49D7 /* SearchPhoto.swift */,
 				6306E46F2907AA9F000E49D7 /* Rx */,
-				6306E4762907AB2B000E49D7 /* SimpleCollectionViewController.swift */,
-				6306E4782907AB3F000E49D7 /* SimpleTableViewController.swift */,
+				63A9280B2907EAF3002D1D8F /* RxExample */,
 				6306E47A2907AB4A000E49D7 /* MVVM */,
 				6306E4572907A768000E49D7 /* Assets.xcassets */,
 				6306E4542907A767000E49D7 /* Main.storyboard */,
@@ -142,6 +159,52 @@
 			path = MVVM;
 			sourceTree = "<group>";
 		};
+		63A9280B2907EAF3002D1D8F /* RxExample */ = {
+			isa = PBXGroup;
+			children = (
+				63A9281E29080D77002D1D8F /* SimpleTableView */,
+				63A928192907FBFB002D1D8F /* Validation */,
+				63A928142907F6D1002D1D8F /* Numbers */,
+				63A928132907F6B0002D1D8F /* SimplePickerView */,
+			);
+			path = RxExample;
+			sourceTree = "<group>";
+		};
+		63A928132907F6B0002D1D8F /* SimplePickerView */ = {
+			isa = PBXGroup;
+			children = (
+				63A9280C2907EB23002D1D8F /* SimplePickerViewRxViewController.swift */,
+				63A9280E2907ED68002D1D8F /* SimplePickerView.swift */,
+			);
+			path = SimplePickerView;
+			sourceTree = "<group>";
+		};
+		63A928142907F6D1002D1D8F /* Numbers */ = {
+			isa = PBXGroup;
+			children = (
+				63A928152907F827002D1D8F /* NumbersRxViewController.swift */,
+				63A928172907F847002D1D8F /* NumbersView.swift */,
+			);
+			path = Numbers;
+			sourceTree = "<group>";
+		};
+		63A928192907FBFB002D1D8F /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				63A9281A2907FC0E002D1D8F /* SimpleValidationRxViewController.swift */,
+				63A9281C2907FC80002D1D8F /* SimpleValidationView.swift */,
+			);
+			path = Validation;
+			sourceTree = "<group>";
+		};
+		63A9281E29080D77002D1D8F /* SimpleTableView */ = {
+			isa = PBXGroup;
+			children = (
+				63A9281F29080D9D002D1D8F /* SimpleTableViewRxViewController.swift */,
+			);
+			path = SimpleTableView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -162,6 +225,7 @@
 				6306E4842907AD0C000E49D7 /* Alamofire */,
 				6306E4872907AD18000E49D7 /* RxCocoa */,
 				6306E4892907AD18000E49D7 /* RxSwift */,
+				63A928112907EE6D002D1D8F /* SnapKit */,
 			);
 			productName = SeSAC16_17Week;
 			productReference = 6306E44B2907A767000E49D7 /* SeSAC16_17Week.app */;
@@ -194,6 +258,7 @@
 			packageReferences = (
 				6306E4832907AD0C000E49D7 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				6306E4862907AD18000E49D7 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				63A928102907EE6D002D1D8F /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 6306E44C2907A767000E49D7 /* Products */;
 			projectDirPath = "";
@@ -224,6 +289,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6306E4532907A767000E49D7 /* ViewController.swift in Sources */,
+				63A9281D2907FC80002D1D8F /* SimpleValidationView.swift in Sources */,
+				63A9281B2907FC0E002D1D8F /* SimpleValidationRxViewController.swift in Sources */,
 				6306E4712907AAB3000E49D7 /* SubjectViewController.swift in Sources */,
 				6306E4752907AB0F000E49D7 /* SubjectViewModel.swift in Sources */,
 				6306E47E2907AB66000E49D7 /* NewsViewController.swift in Sources */,
@@ -235,10 +302,15 @@
 				6306E4672907AA02000E49D7 /* APIService.swift in Sources */,
 				6306E47C2907AB58000E49D7 /* CObservable.swift in Sources */,
 				6306E4732907AAF2000E49D7 /* RxCocoaExampleViewController.swift in Sources */,
+				63A9282029080D9D002D1D8F /* SimpleTableViewRxViewController.swift in Sources */,
 				6306E46E2907AA94000E49D7 /* SearchPhoto.swift in Sources */,
+				63A928162907F827002D1D8F /* NumbersRxViewController.swift in Sources */,
+				63A9280D2907EB23002D1D8F /* SimplePickerViewRxViewController.swift in Sources */,
 				6306E44F2907A767000E49D7 /* AppDelegate.swift in Sources */,
 				6306E4652907A9F1000E49D7 /* APIKey.swift in Sources */,
 				6306E4822907AB8C000E49D7 /* News.swift in Sources */,
+				63A928182907F847002D1D8F /* NumbersView.swift in Sources */,
+				63A9280F2907ED68002D1D8F /* SimplePickerView.swift in Sources */,
 				6306E4512907A767000E49D7 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -473,6 +545,14 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		63A928102907EE6D002D1D8F /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -490,6 +570,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6306E4862907AD18000E49D7 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
+		};
+		63A928112907EE6D002D1D8F /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 63A928102907EE6D002D1D8F /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

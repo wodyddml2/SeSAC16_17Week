@@ -41,12 +41,14 @@ class RxCocoaExampleViewController: UIViewController {
             .disposed(by: disposeBag)
         
         simpleLabel.numberOfLines = 2
-        setTableView()
-        setPickerView()
-        setSwitch()
-        setSign()
+//        setTableView()
+//        setPickerView()
+//        setSwitch()
+//        setSign()
+//
+//        setOperator()
         
-        setOperator()
+        setExample()
     }
     
     // viewcontroller deinit 되면, 알아서 disposed도 동작한다.
@@ -55,6 +57,11 @@ class RxCocoaExampleViewController: UIViewController {
         print("deinit")
     }
    
+    func setExample() {
+      
+
+    }
+    
     func setOperator() {
         
 //        Observable.repeatElement("j") // Infinite Observable Sequence
