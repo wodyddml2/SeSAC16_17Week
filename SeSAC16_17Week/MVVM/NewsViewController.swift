@@ -7,6 +7,9 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
 class NewsViewController: UIViewController {
     
     @IBOutlet weak var numberTextField: UITextField!
@@ -21,6 +24,7 @@ class NewsViewController: UIViewController {
     
     var dataSource: UICollectionViewDiffableDataSource<Int, News.NewsItem>!
     
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,14 +38,6 @@ class NewsViewController: UIViewController {
         
     }
     
-    @objc func resetButtonClicked() {
-        viewModel.resetSample()
-    }
-    
-    @objc func loadButtonClicked() {
-        viewModel.loadSample()
-    }
-    
     @objc func numberTextFieldChanged() {
         guard let text = numberTextField.text else { return }
         viewModel.changePageNumberFormat(text)
@@ -49,25 +45,37 @@ class NewsViewController: UIViewController {
     
     func configureViews() {
         numberTextField.addTarget(self, action: #selector(numberTextFieldChanged), for: .editingChanged)
-        resetButton.addTarget(self, action: #selector(resetButtonClicked), for: .touchUpInside)
-        loadButton.addTarget(self, action: #selector(loadButtonClicked), for: .touchUpInside)
-
     }
     
     func bindData() {
         //2.bind 구문을 이용해 VC에 보여주기
-        viewModel.pageNumber.bind { value in
-            print("bind ====== \(value)")
+        viewModel.pageNumber.bind(onNext: { value in
             self.numberTextField.text = value
-        }
+        })
+        .disposed(by: disposeBag)
         
         //추가 되더라도, 제거 되더라도 snapshot이 찍힌다.
-        viewModel.sample.bind { item in
+        viewModel.sample.bind(onNext: { item in
             var snapshot = NSDiffableDataSourceSnapshot<Int, News.NewsItem>()
             snapshot.appendSections([0])
             snapshot.appendItems(item)
             self.dataSource.apply(snapshot, animatingDifferences: false)
-        }
+        })
+        .disposed(by: disposeBag)
+        
+        loadButton.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                vc.viewModel.loadSample()
+            })
+            .disposed(by: disposeBag)
+        
+        resetButton.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                vc.viewModel.resetSample()
+            })
+            .disposed(by: disposeBag)
     }
     
 }
