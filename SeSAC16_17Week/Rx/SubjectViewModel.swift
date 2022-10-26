@@ -6,6 +6,7 @@
 //
 import Foundation
 import RxSwift
+import RxCocoa
 
 struct Contact {
     var name: String
@@ -20,26 +21,26 @@ class SubjectViewModel {
         Contact(name: "JJ", age: 27, number: "010222233333")
     ]
     
-    var list = PublishSubject<[Contact]>()
+    var list = PublishRelay<[Contact]>()
     
     func fetchData() {
-        list.onNext(contactData)
+        list.accept(contactData)
     }
     
     func resetData() {
-        list.onNext([])
+        list.accept([])
     }
     
     func newData() {
         let new = Contact(name: "SSS", age: 1, number: "01010102020")
         contactData.append(new)
-        list.onNext(contactData)
+        list.accept(contactData)
     }
     
     func filterData(query: String) {
         let result = query != "" ? contactData.filter { $0.name.contains(query)
         } : contactData
         
-        list.onNext(result)
+        list.accept(result)
     }
 }

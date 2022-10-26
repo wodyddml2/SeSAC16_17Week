@@ -21,6 +21,8 @@ class SubjectViewController: UIViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     
+    // Subject = Observable + Observer (RxSwift) but Relay는 RxCocoa에서 한 번 더 감싼 것 (ex. publishRelay, behaviorRelay)
+    
     let publish = PublishSubject<Int>() // 초기값이 없는 빈 상태
     let behavior = BehaviorSubject(value: 100) // 초기값 필수
     let replay = ReplaySubject<Int>.create(bufferSize: 3) // bufferSize에 작성된 이벤트 갯수만큼 메모리에서 이벤트를 가지고 있다가, subscribe 직후 한 번에 이벤트를 전달

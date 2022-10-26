@@ -1,5 +1,8 @@
 import UIKit
 
+import RxSwift
+import RxCocoa
+
 class DiffableViewController: UIViewController {
     
 
@@ -8,6 +11,9 @@ class DiffableViewController: UIViewController {
     
     
     var viewModel = DiffableViewModel()
+    
+    let disposeBag = DisposeBag()
+    
     private var cellRegisteration: UICollectionView.CellRegistration<UICollectionViewListCell, SearchResult>!
         
     private var dataSource: UICollectionViewDiffableDataSource<Int, SearchResult>!
@@ -18,22 +24,42 @@ class DiffableViewController: UIViewController {
     
         collectionView.collectionViewLayout = createLayout()
         
-        searchBar.delegate = self
+//        searchBar.delegate = self
         
         collectionView.delegate = self
         
         configureDataSource()
 
-        viewModel.photoList.bind { photo in
-            
+        bindData()
+    }
+    
+    func bindData() {
+        viewModel.photoList
+            .withUnretained(self)
+            .subscribe(onNext: { vc, photo in
             var snapshot = NSDiffableDataSourceSnapshot<Int, SearchResult>() //인스턴스 처럼 생성
             snapshot.appendSections([0])//섹션 추가
             snapshot.appendItems(photo.results)//아이템 추가
-            self.dataSource.apply(snapshot)
-            
-        }
-   
+            vc.dataSource.apply(snapshot)
+        }, onError: { error in
+            print("=====error: \(error)")
+        }, onCompleted: {
+            print("completed")
+        }, onDisposed: {
+            print("disposed")
+        })
+        .disposed(by: disposeBag)
+        
+        searchBar.rx.text.orEmpty
+            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .withUnretained(self)
+            .subscribe { (vc, value) in
+                vc.viewModel.requestSearchPhoto(query: value)
+            }
+            .disposed(by: disposeBag)
     }
+    
     
 }
 
@@ -45,15 +71,15 @@ extension DiffableViewController: UICollectionViewDelegate {
     
 }
 
-extension DiffableViewController: UISearchBarDelegate {
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
-        viewModel.requestSearchPhoto(query: searchBar.text!)
-        
-    }
-    
-}
+//extension DiffableViewController: UISearchBarDelegate {
+//
+//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//
+//        viewModel.requestSearchPhoto(query: searchBar.text!)
+//
+//    }
+//
+//}
 
 extension DiffableViewController {
 

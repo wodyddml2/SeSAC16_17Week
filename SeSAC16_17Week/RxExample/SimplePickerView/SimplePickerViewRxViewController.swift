@@ -51,7 +51,8 @@ final class SimplePickerViewRxViewController: ViewController {
                 print("select2: \(model)")
             })
             .disposed(by: disposeBag)
-        
+        // .on(.next)
+        // .onNext
         
         Observable.just([UIColor.darkGray, UIColor.red, UIColor.blue])
             .bind(to: mainView.pickerView3.rx.items) { _, item, _ in

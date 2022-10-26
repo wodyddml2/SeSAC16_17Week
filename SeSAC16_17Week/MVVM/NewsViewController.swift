@@ -33,9 +33,7 @@ class NewsViewController: UIViewController {
         configureDataSource()
         
         bindData()
-        
-        configureViews()
-        
+      
     }
     
     @objc func numberTextFieldChanged() {
@@ -43,23 +41,32 @@ class NewsViewController: UIViewController {
         viewModel.changePageNumberFormat(text)
     }
     
-    func configureViews() {
-        numberTextField.addTarget(self, action: #selector(numberTextFieldChanged), for: .editingChanged)
-    }
     
     func bindData() {
         //2.bind 구문을 이용해 VC에 보여주기
-        viewModel.pageNumber.bind(onNext: { value in
-            self.numberTextField.text = value
+        viewModel.pageNumber
+            .withUnretained(self)
+            .bind(onNext: { vc, value in
+            vc.numberTextField.text = value
         })
         .disposed(by: disposeBag)
         
+        numberTextField.rx.text.orEmpty
+            .withUnretained(self)
+            .bind { vc, value in
+                    vc.viewModel.changePageNumberFormat(value)
+            }
+            .disposed(by: disposeBag)
+    
+        
         //추가 되더라도, 제거 되더라도 snapshot이 찍힌다.
-        viewModel.sample.bind(onNext: { item in
+        viewModel.sample
+            .withUnretained(self)
+            .bind(onNext: { vc, item in
             var snapshot = NSDiffableDataSourceSnapshot<Int, News.NewsItem>()
             snapshot.appendSections([0])
             snapshot.appendItems(item)
-            self.dataSource.apply(snapshot, animatingDifferences: false)
+            vc.dataSource.apply(snapshot, animatingDifferences: false)
         })
         .disposed(by: disposeBag)
         
