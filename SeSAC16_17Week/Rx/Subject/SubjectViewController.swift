@@ -9,6 +9,7 @@ import UIKit
 
 import RxSwift
 import RxCocoa
+import RxAlamofire
 
 class SubjectViewController: UIViewController {
     
@@ -31,6 +32,8 @@ class SubjectViewController: UIViewController {
 
     var disposeBag = DisposeBag()
     let viewModel = SubjectViewModel()
+    
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()

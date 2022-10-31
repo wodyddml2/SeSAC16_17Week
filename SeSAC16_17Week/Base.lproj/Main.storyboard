@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Yzn-FR-OS3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
@@ -31,13 +31,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="NKz-iu-SGj">
+                                <rect key="frame" x="0.0" y="460" width="390" height="350"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="350" id="nH9-Yd-Hid"/>
+                                </constraints>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="NKz-iu-SGj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DBD-yb-Ki3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="NKz-iu-SGj" secondAttribute="bottom" id="Lhj-jb-Rr7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NKz-iu-SGj" secondAttribute="trailing" id="XRk-TA-8hc"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="button" destination="mcl-Zt-Gxz" id="Pc4-Me-JdS"/>
                         <outlet property="label" destination="KSP-xK-Xxl" id="Oyy-SH-kRS"/>
+                        <outlet property="tableView" destination="NKz-iu-SGj" id="vSW-fj-V0V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -411,6 +424,64 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uvm-Gf-Ysb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4788" y="-28"/>
+        </scene>
+        <!--Validation View Controller-->
+        <scene sceneID="yiA-BB-QgA">
+            <objects>
+                <viewController id="8yD-s3-x9A" customClass="ValidationViewController" customModule="SeSAC16_17Week" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wlI-YS-Kpw">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="고래밥" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ya7-ZS-hFv">
+                                <rect key="frame" x="20" y="67" width="350" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="WqJ-Sm-pWY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8자 이상!!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SFg-BP-fCz">
+                                <rect key="frame" x="20" y="137" width="350" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="c5c-3C-qAy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="31N-eW-Qbe">
+                                <rect key="frame" x="20" y="207" width="350" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="T1L-Kg-mYy"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="hwb-TU-i9p"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="31N-eW-Qbe" firstAttribute="leading" secondItem="hwb-TU-i9p" secondAttribute="leading" constant="20" id="49j-rP-59l"/>
+                            <constraint firstItem="hwb-TU-i9p" firstAttribute="trailing" secondItem="ya7-ZS-hFv" secondAttribute="trailing" constant="20" id="4w1-oM-vLJ"/>
+                            <constraint firstItem="ya7-ZS-hFv" firstAttribute="top" secondItem="hwb-TU-i9p" secondAttribute="top" constant="20" id="7G2-fx-nEQ"/>
+                            <constraint firstItem="ya7-ZS-hFv" firstAttribute="leading" secondItem="hwb-TU-i9p" secondAttribute="leading" constant="20" id="A72-R0-uW3"/>
+                            <constraint firstItem="SFg-BP-fCz" firstAttribute="top" secondItem="ya7-ZS-hFv" secondAttribute="bottom" constant="20" id="RLh-sN-zGV"/>
+                            <constraint firstItem="hwb-TU-i9p" firstAttribute="trailing" secondItem="SFg-BP-fCz" secondAttribute="trailing" constant="20" id="UY4-NE-t2k"/>
+                            <constraint firstItem="31N-eW-Qbe" firstAttribute="top" secondItem="SFg-BP-fCz" secondAttribute="bottom" constant="20" id="X3N-Ht-Wf2"/>
+                            <constraint firstItem="SFg-BP-fCz" firstAttribute="leading" secondItem="hwb-TU-i9p" secondAttribute="leading" constant="20" id="XiG-cM-gRl"/>
+                            <constraint firstItem="hwb-TU-i9p" firstAttribute="trailing" secondItem="31N-eW-Qbe" secondAttribute="trailing" constant="20" id="YpP-MF-lP6"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="nameTextField" destination="ya7-ZS-hFv" id="o9t-A7-bi3"/>
+                        <outlet property="stepButton" destination="31N-eW-Qbe" id="Dvg-jh-RHb"/>
+                        <outlet property="validationLabel" destination="SFg-BP-fCz" id="nck-y4-qCm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g0r-M2-IfJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5720" y="-28"/>
         </scene>
     </scenes>
     <resources>
