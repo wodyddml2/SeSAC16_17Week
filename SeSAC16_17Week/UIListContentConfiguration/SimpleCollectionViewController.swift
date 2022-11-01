@@ -51,7 +51,7 @@ class SimpleCollectionViewController: UICollectionViewController {
             content.imageProperties.tintColor = .systemYellow
             
             cell.contentConfiguration = content
-            
+           
             var backgroundConfig = UIBackgroundConfiguration.listPlainCell()
             backgroundConfig.backgroundColor = .lightGray
             backgroundConfig.cornerRadius = 10

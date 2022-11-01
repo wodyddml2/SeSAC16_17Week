@@ -39,42 +39,86 @@ class SubjectViewController: UIViewController {
         super.viewDidLoad()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ContactCell")
         
-        viewModel.list
-            .bind(to: tableView.rx.items(cellIdentifier: "ContactCell", cellType: UITableViewCell.self)) {(row, element, cell) in
+        // After
+        let input = SubjectViewModel.Input(addTap: addButton.rx.tap, resetTap: resetButton.rx.tap, newTap: newButton.rx.tap, searchText: searchBar.rx.text)
+        
+        let output = viewModel.transform(input: input)
+        
+        output.list
+            .drive(tableView.rx.items(cellIdentifier: "ContactCell", cellType: UITableViewCell.self)) {(row, element, cell) in
                 cell.textLabel?.text = "\(element.name): \(element.age)세 (\(element.number))"
             }
             .disposed(by: disposeBag)
         
-        addButton.rx.tap
+        output.addTap
             .withUnretained(self)
             .subscribe { (vc, _) in
                 vc.viewModel.fetchData()
             }
             .disposed(by: disposeBag)
         
-        resetButton.rx.tap
+        output.resetTap
             .withUnretained(self)
             .subscribe { (vc, _) in
                 vc.viewModel.resetData()
             }
             .disposed(by: disposeBag)
         
-        newButton.rx.tap
+        output.newTap
             .withUnretained(self)
             .subscribe { (vc, _) in
                 vc.viewModel.newData()
             }
             .disposed(by: disposeBag)
         
-        searchBar.rx.text.orEmpty
-//            .distinctUntilChanged() // 같은 값을 받지 않음(낼 보완)
+        output.searchText
             .withUnretained(self)
-            .debounce(RxTimeInterval.seconds(2), scheduler: MainScheduler.instance) // 실시간 검색을 하는 문제로 API 호출을 줄이기 위해 입력에 시간을 줌.
             .subscribe { (vc, value) in
                 print("=====\(value)")
                 vc.viewModel.filterData(query: value)
             }
             .disposed(by: disposeBag)
+        
+        
+        
+        // Before
+//        viewModel.list // VM -> VC (OUTPUT)
+//            .asDriver(onErrorJustReturn: [])
+//            .drive(tableView.rx.items(cellIdentifier: "ContactCell", cellType: UITableViewCell.self)) {(row, element, cell) in
+//                cell.textLabel?.text = "\(element.name): \(element.age)세 (\(element.number))"
+//            }
+//            .disposed(by: disposeBag)
+//
+//        addButton.rx.tap // VC -> VM (INPUT)
+//            .withUnretained(self)
+//            .subscribe { (vc, _) in
+//                vc.viewModel.fetchData()
+//            }
+//            .disposed(by: disposeBag)
+//
+//        resetButton.rx.tap // VC -> VM (INPUT)
+//            .withUnretained(self)
+//            .subscribe { (vc, _) in
+//                vc.viewModel.resetData()
+//            }
+//            .disposed(by: disposeBag)
+//
+//        newButton.rx.tap // VC -> VM (INPUT)
+//            .withUnretained(self)
+//            .subscribe { (vc, _) in
+//                vc.viewModel.newData()
+//            }
+//            .disposed(by: disposeBag)
+//
+//        searchBar.rx.text.orEmpty // VC -> VM (INPUT)
+//            .debounce(RxTimeInterval.seconds(2), scheduler: MainScheduler.instance) // 실시간 검색을 하는 문제로 API 호출을 줄이기 위해 입력에 시간을 줌.
+//            .distinctUntilChanged() // 같은 값을 받지 않음(낼 보완)
+//            .withUnretained(self)
+//            .subscribe { (vc, value) in
+//                print("=====\(value)")
+//                vc.viewModel.filterData(query: value)
+//            }
+//            .disposed(by: disposeBag)
     }
     
     

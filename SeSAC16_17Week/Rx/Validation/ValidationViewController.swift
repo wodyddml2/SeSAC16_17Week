@@ -32,12 +32,41 @@ class ValidationViewController: UIViewController {
 extension ValidationViewController {
     func bind() {
         
-        viewModel.validText
+        // After
+        let input = ValidationViewModel.Input(text: nameTextField.rx.text, tap: stepButton.rx.tap)
+        let output = viewModel.transform(input: input)
+        
+        output.text
+            .drive(validationLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        output.validation
+            .bind(to: stepButton.rx.isEnabled, validationLabel.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+        output.validation
+            .withUnretained(self)
+            .bind { vc, value in
+                let color: UIColor = value ? .systemPink : .systemGray
+                vc.stepButton.backgroundColor = color
+            }
+            .disposed(by: disposeBag)
+        
+        output.tap
+            .bind(onNext: { _ in
+                print("next")
+            })
+            .disposed(by: disposeBag)
+        
+        
+        
+        // Before
+        viewModel.validText // OUTPUT
             .asDriver()
             .drive(validationLabel.rx.text)
             .disposed(by: disposeBag)
         
-        let validation = nameTextField.rx.text
+        let validation = nameTextField.rx.text // Input
             .orEmpty
             .map { $0.count >= 8 }
             .share() // Subject, Relay에 내부적으로 구성
@@ -57,7 +86,7 @@ extension ValidationViewController {
         // Stream == Sequence : 데이터의 흐름
      
         
-        stepButton.rx.tap
+        stepButton.rx.tap // Input
             .bind(onNext: { _ in
                 print("next")
             })
